@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': os.environ.get("PSOTGRES_DBNAME", 'image_labelling'),
         'USER': os.environ.get("PSOTGRES_DBUSER", 'db_user'),
         'PASSWORD': os.environ.get("PSOTGRES_DBPASSWORD", 'gwrtYkHxk&Q@'),
-        'HOST': os.environ.get("PSOTGRES_DBHOST", 'localhost'),
+        'HOST': os.environ.get("POSTGRES_DBHOST", 'localhost'),
         'PORT': os.environ.get("POSTGRES_DBPORT", '5432'),
     }
 }
@@ -146,3 +146,8 @@ SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("JWT",),
     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=1),
 }
+
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+print(STATIC_ROOT)

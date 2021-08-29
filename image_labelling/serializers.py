@@ -5,9 +5,7 @@ from image_labelling.settings import STATUS_CHOICES
 
 class MultiImageUploadSerializer(serializers.Serializer):
 
-    images = serializers.ListField(
-        child=serializers.ImageField(allow_empty_file=False)
-    )
+    images = serializers.ListField(child=serializers.ImageField(allow_empty_file=False))
 
 
 class ListRequestSerialzier(serializers.Serializer):
@@ -20,26 +18,36 @@ class ListRequestSerialzier(serializers.Serializer):
 
     def validate(self, data):
 
-        start_idx = data.get('start_idx')
-        end_idx = data.get('end_idx')
+        start_idx = data.get("start_idx")
+        end_idx = data.get("end_idx")
 
         start_date = data.get("start_date")
         end_date = data.get("end_date")
 
         if (not start_idx and start_idx != 0) and end_idx:
-            raise serializers.ValidationError("Start index cannot be null when end index is given")
+            raise serializers.ValidationError(
+                "Start index cannot be null when end index is given"
+            )
         elif start_idx and (not end_idx and end_idx != 0):
-            raise serializers.ValidationError("End index cannot be null when start index is given")
+            raise serializers.ValidationError(
+                "End index cannot be null when start index is given"
+            )
         elif start_idx and end_idx and start_idx >= end_idx:
-            raise serializers.ValidationError("Start index should be less than end index")
-        
+            raise serializers.ValidationError(
+                "Start index should be less than end index"
+            )
+
         if not start_date and end_date:
-            raise serializers.ValidationError("Start date cannot be null when end date is given")
+            raise serializers.ValidationError(
+                "Start date cannot be null when end date is given"
+            )
         elif start_date and not end_date:
-            raise serializers.ValidationError("End date cannot be null when start date is given")
+            raise serializers.ValidationError(
+                "End date cannot be null when start date is given"
+            )
         elif start_date and start_date and start_date >= end_date:
             raise serializers.ValidationError("Start date should be less than end date")
-    
+
         return data
 
 
@@ -89,12 +97,16 @@ class LabelListRequestSerialzier(serializers.Serializer):
         end_date = data.get("end_date")
 
         if not start_date and end_date:
-            raise serializers.ValidationError("Start date cannot be null when end date is given")
+            raise serializers.ValidationError(
+                "Start date cannot be null when end date is given"
+            )
         elif start_date and not end_date:
-            raise serializers.ValidationError("End date cannot be null when start date is given")
+            raise serializers.ValidationError(
+                "End date cannot be null when start date is given"
+            )
         elif start_date and start_date and start_date >= end_date:
             raise serializers.ValidationError("Start date should be less than end date")
-    
+
         return data
 
 
