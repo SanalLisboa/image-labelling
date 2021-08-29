@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:11
+    restart: always
+    environment:
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=gwrtYkHxk&Q@
+      - POSTGRES_DB=image_labelling
+    volumes:
+      - ./postgresqls:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+  web:
+    image: web
+    build:
+      context: .
+    environment:
+      - POSTGRES_DBHOST=db
+    command: >
+      /bin/sh -c "python manage.py migrate 
+      && gunicorn --timeout 120 core.wsgi --bind 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
