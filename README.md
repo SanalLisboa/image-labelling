@@ -18,3 +18,5 @@ RUNNING PROJECT
 API SPECS
 
 Import `image-labelling-spec.yml` in Insomnia app
+
+![Alt text](readme_static/api-flow.png?raw=true "Image lebelling API flow")
