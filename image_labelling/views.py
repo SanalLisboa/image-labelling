@@ -40,6 +40,8 @@ from image_labelling.utils import (
 
 
 class ImageView(APIView):
+    """This view is responible for uploading and image, getting an image, and deleting and image"""
+
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
@@ -100,6 +102,8 @@ class ImageView(APIView):
 
 
 class ImageListView(APIView):
+    """This view is responsible for providing a list view of all the image metadata."""
+
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
@@ -126,6 +130,8 @@ class ImageListView(APIView):
 
 
 class LabelView(APIView):
+    """Ths view is responsibe for adding labels, deleting labels and viewing labels."""
+
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
@@ -210,6 +216,8 @@ class ImageLabelsView(APIView):
 
 
 class ImageLabelsSearchView(APIView):
+    """This view is responsible for searching labels in db."""
+
     def get(self, request):
 
         request_serialzier = ImageSearchRequestSerialzier(data=request.GET)
@@ -226,6 +234,8 @@ class ImageLabelsSearchView(APIView):
 
 
 class ImageMetadataView(APIView):
+    """This view is responsible for getting image metadata"""
+
     def get(self, request):
 
         request_serialzier = ImageRenderRequestSerializer(data=request.GET)

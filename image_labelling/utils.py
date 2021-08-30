@@ -1,4 +1,5 @@
 import codecs
+import datetime
 import hashlib
 import uuid
 from io import BytesIO
@@ -20,16 +21,20 @@ from image_labelling.settings import TEMP_FILE_STORAGE_PATH, StatusMapper
 
 
 class ImageHandler:
-    def __init__(self, file: InMemoryUploadedFile, user: User):
+    """The image handler class is responsible for storing file to filesystem
+    and creating a db entry for the same"""
 
-        self._filename = file.name
-        self._format = file.name.split(".")[-1]
-        self._bytes_obj = file.read()
-        self._sha = hashlib.sha256(self._bytes_obj).hexdigest()
-        self._uuid = uuid.uuid4()
-        self._user = user
+    def __init__(self, file: InMemoryUploadedFile, user: User) -> None:
+
+        self._filename: str = file.name
+        self._format: str = file.name.split(".")[-1]
+        self._bytes_obj: BytesIO = file.read()
+        self._sha: str = hashlib.sha256(self._bytes_obj).hexdigest()
+        self._uuid: uuid.uuid4 = uuid.uuid4()
+        self._user: User = user
 
     def _write_image_fs(self) -> None:
+        """Wirtes image file in form of bytes to file system."""
 
         with open(
             "{}/{}.{}".format(TEMP_FILE_STORAGE_PATH, str(self._uuid), self._format),
@@ -38,6 +43,7 @@ class ImageHandler:
             f.write(self._bytes_obj)
 
     def _verify_image_object_present(self) -> bool:
+        """This method verifies if a image is present in the database or not."""
 
         try:
             image = Image.objects.get(integrity=self._sha)
@@ -48,12 +54,14 @@ class ImageHandler:
             return False
 
     def _create_db_object(self):
+        """Creates a image data entry in the database."""
 
         Image.objects.create(
             id=self._uuid, format=self._format, integrity=self._sha, user=self._user
         )
 
     def _check_inactive(self) -> bool:
+        """This method checks if an image is marked as inactive or not."""
 
         try:
             image = Image.objects.get(integrity=self._sha)
@@ -63,6 +71,7 @@ class ImageHandler:
             return False
 
     def store(self):
+        """The main method responible to store a image in filesystem and database."""
 
         if self._verify_image_object_present():
 
@@ -81,8 +90,8 @@ class ImageHandler:
             self._create_db_object()
 
 
-def delete_image(user, image_id) -> None:
-
+def delete_image(user: User, image_id: str) -> None:
+    """This function is responsibe for deleting image ie deactiving the image from database."""
     try:
         image = Image.objects.get(id=image_id)
 
@@ -106,8 +115,13 @@ def delete_image(user, image_id) -> None:
 
 
 def list_images(
-    start_idx, end_idx, start_date, end_date, status
+    start_idx: int,
+    end_idx: int,
+    start_date: datetime.datetime,
+    end_date: datetime.datetime,
+    status: str,
 ) -> List[Dict[str, str]]:
+    """This function is responsible for listing all images in given index range or given date range"""
 
     status = getattr(StatusMapper, status).value
 
@@ -149,6 +163,7 @@ def list_images(
 
 
 def get_image_obj(image_id: str) -> bool:
+    """This function returns and image orm object given image id."""
 
     try:
         image = Image.objects.get(id=image_id)
@@ -160,6 +175,7 @@ def get_image_obj(image_id: str) -> bool:
 
 
 def get_image_path(image_id) -> Tuple[str, str]:
+    """This function returns image path for where the image is stored in file system."""
 
     image = get_image_obj(image_id)
 
@@ -173,6 +189,8 @@ def get_image_path(image_id) -> Tuple[str, str]:
 
 
 class LabelsManager:
+    """This class is responsible for management of labels"""
+
     def __init__(self, user: User, image_id: uuid.uuid4) -> None:
 
         self._image = get_image_obj(image_id)
@@ -184,6 +202,7 @@ class LabelsManager:
         self._image_id = image_id
 
     def _get_queryset_if_label_exists(self, label_value: str) -> Label:
+        """ "Returns a label object register by the user for an image with give label value"""
 
         try:
             label = Label.objects.get(
@@ -194,6 +213,7 @@ class LabelsManager:
             return None
 
     def _update_existing_label(self, label_obj, coordinates: Dict[str, float]) -> None:
+        """This method updates the existing label or cordinates of it."""
 
         x1 = coordinates["x1"]
         x2 = coordinates["x2"]
@@ -220,6 +240,7 @@ class LabelsManager:
     def _insert_new_label(
         self, coordinates: Dict[str, float], label_value: str
     ) -> None:
+        """This function inserts a new label for an image."""
 
         id = uuid.uuid4()
         x1 = coordinates["x1"]
@@ -239,6 +260,7 @@ class LabelsManager:
         )
 
     def store(self, coordinates: Dict[str, float], label: str) -> None:
+        """This method is responsible to perform all computations requried for storing labels."""
 
         label_obj = self._get_queryset_if_label_exists(label)
 
@@ -248,6 +270,8 @@ class LabelsManager:
             self._insert_new_label(coordinates, label)
 
     def delete(self, label_id: str) -> None:
+        """ "This method is responsible for deactiving active labels."""
+
         try:
             label_obj = Label.objects.get(
                 user_id=self._user.id,
@@ -266,6 +290,7 @@ class LabelsManager:
 
 
 def list_labels(start_date, end_date, status) -> List[Dict[str, str]]:
+    """This function is responsible for listing labels in given date range."""
 
     status = getattr(StatusMapper, status).value
 
@@ -329,8 +354,11 @@ def list_labels(start_date, end_date, status) -> List[Dict[str, str]]:
 
 
 class LabelSearch:
+    """This class is responsible for performing label search given a query parm."""
+
     @staticmethod
-    def text_distance(t1, t2):
+    def text_distance(t1: str, t2: str) -> float:
+        """This method is responsible for computing jaccard similarity between two strings"""
 
         return textdistance.jaccard.normalized_similarity(t1.lower(), t2.lower())
 
@@ -339,14 +367,17 @@ class LabelSearch:
         self._query = query
 
     def _query_set_contains(self):
+        """Returns queryset after performing icontains"""
 
-        return Label.objects.filter(label__icontains=self._query)
+        return Label.objects.filter(label__icontains=self._query, status=1)
 
     def _query_set_search(self):
+        """Returns querysert after performing serach for given query."""
 
-        return Label.objects.filter(label__search=self._query)
+        return Label.objects.filter(label__search=self._query, status=1)
 
     def search(self) -> Dict[str, Any]:
+        """Method that computes search and returns the search result."""
 
         query_set = list(self._query_set_contains()) + list(self._query_set_search())
 
@@ -380,6 +411,7 @@ class LabelSearch:
 
 
 def get_labels_by_image_id(image_id: uuid.uuid4) -> Dict[str, Any]:
+    """This function is responsible for getting labels given image id"""
 
     query_set = Label.objects.filter(image_id=image_id, status=1).order_by("updated_at")
 
@@ -397,6 +429,7 @@ def get_labels_by_image_id(image_id: uuid.uuid4) -> Dict[str, Any]:
 
 
 def get_image_metadata(image_id: uuid.uuid4) -> Dict[str, Any]:
+    """This function is responsible for retriving image metadata given image id."""
 
     try:
         image = Image.objects.get(id=image_id)
