@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get("PSOTGRES_DBNAME", 'image_labelling'),
-        'USER': os.environ.get("PSOTGRES_DBUSER", 'db_user'),
-        'PASSWORD': os.environ.get("PSOTGRES_DBPASSWORD", 'gwrtYkHxk&Q@'),
+        'NAME': os.environ.get("POSTGRES_DBNAME", 'image_labelling'),
+        'USER': os.environ.get("POSTGRES_DBUSER", 'db_user'),
+        'PASSWORD': os.environ.get("POSTGRES_DBPASSWORD", 'gwrtYkHxk&Q@'),
         'HOST': os.environ.get("POSTGRES_DBHOST", 'localhost'),
         'PORT': os.environ.get("POSTGRES_DBPORT", '5432'),
     }
@@ -150,4 +150,3 @@ SIMPLE_JWT = {
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-print(STATIC_ROOT)
