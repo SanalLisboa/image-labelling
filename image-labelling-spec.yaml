@@ -1,0 +1,525 @@
+_type: export
+__export_format: 4
+__export_date: 2021-08-30T01:16:52.609Z
+__export_source: insomnia.desktop.app:v2021.5.0
+resources:
+  - _id: req_ccab26dba2994ed5b654d95a5b547555
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630286062407
+    created: 1630224822434
+    url: http://localhost:8000/image-labelling/image
+    name: DELETE-IMAGE
+    description: ""
+    method: DELETE
+    body: {}
+    parameters:
+      - id: pair_2756ed93a30844a7ae6a866518445aee
+        name: image_id
+        value: 0f1f26d9-341a-4749-bb0b-93baeb345ba3
+        description: ""
+    headers:
+      - id: pair_3806f9313c624c3ba109a8f735a6ca42
+        name: Authorization
+        value: JWT
+          eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMzcxODQyLCJqdGkiOiI1NDkyZTNhY2NlZDE0MjJkYWFkYmM3NjI5NWNjYTViMyIsInVzZXJfaWQiOjF9.93TM3C3B2HJKIkWql_PZh7QtQCMT_YajM8LtsXkcTgI
+        description: ""
+    authentication: {}
+    metaSortKey: -1630224822434
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_a2bb96bdf6284625be47c08c87840b55
+    parentId: null
+    modified: 1630128637760
+    created: 1630128637760
+    name: image-labelling-spec.yml
+    description: ""
+    scope: design
+    _type: workspace
+  - _id: req_a0b0c0b842ec475cabac14a982a51a67
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630286055046
+    created: 1630223618684
+    url: http://localhost:8000/image-labelling/image/metadata
+    name: GET-IMAGE-METADATA
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_4a24e727be6d45758ab36c780776a734
+        name: image_id
+        value: 0f1f26d9-341a-4749-bb0b-93baeb345ba3
+        description: ""
+    headers:
+      - id: pair_1c12aa8180a54ddf98d4956ff199440f
+        name: Authorization
+        value: JWT
+          eyJ0eXAiOiJKV1QQiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMzcxODQyLCJqdGkiOiI1NDkyZTNhY2NlZDE0MjJkYWFkYmM3NjI5NWNjYTViMyIsInVzZXJfaWQiOjF9.93TM3C3B2HJKIkWql_PZh7QtQCMT_YajM8LtsXkcTgI
+        description: ""
+    authentication: {}
+    metaSortKey: -1630223618684
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a810552ff2b94d708b168b87df1afdcc
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630286071343
+    created: 1630221971518
+    url: http://localhost:8000/image-labelling/label
+    name: GET-IMAGE-LABELS
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_f45638510c7d4094a20e035cd13b0723
+        name: image_id
+        value: 0f1f26d9-341a-4749-bb0b-93baeb345ba3
+        description: ""
+      - id: pair_cefe83debce148e3b650eebd3afa19db
+        name: ""
+        value: ""
+        description: ""
+    headers:
+      - id: pair_becf53d9f1da435bbc9601979fb7a6da
+        name: Authorization
+        value: JWT
+          eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMzcxODQyLCJqdGkiOiI1NDkyZTNhY2NlZDE0MjJkYWFkYmM3NjI5NWNjYTViMyIsInVzZXJfaWQiOjF9.93TM3C3B2HJKIkWql_PZh7QtQCMT_YajM8LtsXkcTgI
+        description: ""
+    authentication: {}
+    metaSortKey: -1630221971518
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_43533b0f897b4c06b7d6ae6d3fa27cec
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630286085838
+    created: 1630221100038
+    url: http://localhost:8000/image-labelling/search
+    name: SEARCH-IMAGE-LABELS
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_72556f3d404841d08864b712006f0b36
+        name: query
+        value: diabetes
+        description: ""
+    headers:
+      - id: pair_55db82ba740e45938ebd1dcc339307aa
+        name: Authorization
+        value: JWT
+          eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMzcxODQyLCJqdGkiOiI1NDkyZTNhY2NlZDE0MjJkYWFkYmM3NjI5NWNjYTViMyIsInVzZXJfaWQiOjF9.93TM3C3B2HJKIkWql_PZh7QtQCMT_YajM8LtsXkcTgI
+        description: ""
+    authentication: {}
+    metaSortKey: -1630221100039
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f276e8387e864918a81ae3c78ae5a9d2
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630286099246
+    created: 1630219041184
+    url: http://localhost:8000/image-labelling/list
+    name: LIST-IMAGE-LABELS
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_0d5bcb8816324cb191c0538e15d108da
+        name: start_date
+        value: 2021-08-28T00:45:13.143278Z
+        description: ""
+        disabled: true
+      - id: pair_8f4a8ddf999d4aa6a7229df8f1b623db
+        name: end_date
+        value: 2021-08-29T13:46:13.143278Z
+        description: ""
+        disabled: true
+      - id: pair_068eb1835a454e3b87076f51af3a4bad
+        name: status
+        value: active
+        description: ""
+    headers:
+      - id: pair_61797c19dc1349879b42ae71f21c040f
+        name: Authorization
+        value: JWT
+          eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMzcxODQyLCJqdGkiOiI1NDkyZTNhY2NlZDE0MjJkYWFkYmM3NjI5NWNjYTViMyIsInVzZXJfaWQiOjF9.93TM3C3B2HJKIkWql_PZh7QtQCMT_YajM8LtsXkcTgI
+        description: ""
+    authentication: {}
+    metaSortKey: -1630219041184
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_13c64c6a98204219b9897fea3a1bafed
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630286114546
+    created: 1630215954617
+    url: http://localhost:8000/image-labelling/label
+    name: DELETE-LABEL
+    description: ""
+    method: DELETE
+    body: {}
+    parameters:
+      - id: pair_be0500fb39de4f5e987cfcef8299d4cb
+        name: label_id
+        value: 15aaa825-8918-4867-a132-75b593ddf1c8
+        description: ""
+      - id: pair_4064303b1ed4419684a6a24ee2d7e4c2
+        name: image_id
+        value: 0f1f26d9-341a-4749-bb0b-93baeb345ba3
+        description: ""
+    headers:
+      - id: pair_77dbc825c0614f8e8821631166baf24b
+        name: Authorization
+        value: JWT
+          eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMzcxODQyLCJqdGkiOiI1NDkyZTNhY2NlZDE0MjJkYWFkYmM3NjI5NWNjYTViMyIsInVzZXJfaWQiOjF9.93TM3C3B2HJKIkWql_PZh7QtQCMT_YajM8LtsXkcTgI
+        description: ""
+    authentication: {}
+    metaSortKey: -1630215954617
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ef601af35c644fb0b12b02e2e5fafa59
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630286120380
+    created: 1630214912303
+    url: http://localhost:8000/image-labelling/label
+    name: ADD-LABELS
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        [
+        	{
+        		"image_id": "0f1f26d9-341a-4749-bb0b-93baeb345ba3",
+        		"coordinates": {
+        			"x1": 0.223,
+        			"y1": 3.46,
+        			"x2": 0.44564,
+        			"y2": 6.889
+        		},
+        		"label": "cancer"
+        	},
+        	{
+        		"image_id": "0f1f26d9-341a-4749-bb0b-93baeb345ba3",
+        		"coordinates": {
+        			"x1": 0.323,
+        			"y1": 3.46,
+        			"x2": 0.44564,
+        			"y2": 6.889
+        		},
+        		"label": "asthma"
+        	},
+        	{
+        		"image_id": "0f1f26d9-341a-4749-bb0b-93baeb345ba3",
+        		"coordinates": {
+        			"x1": 0.323,
+        			"y1": 3.46,
+        			"x2": 0.44564,
+        			"y2": 6.889
+        		},
+        		"label": "diabetes"
+        	},
+        	{
+        		"image_id": "0f1f26d9-341a-4749-bb0b-93baeb345ba3",
+        		"coordinates": {
+        			"x1": 0.323,
+        			"y1": 3.46,
+        			"x2": 0.44564,
+        			"y2": 6.889
+        		},
+        		"label": "copd"
+        	},
+        	{
+        		"image_id": "0f1f26d9-341a-4749-bb0b-93baeb345ba3",
+        		"coordinates": {
+        			"x1": 0.323,
+        			"y1": 3.46,
+        			"x2": 0.44564,
+        			"y2": 6.889
+        		},
+        		"label": "stroke"
+        	},
+        	{
+        		"image_id": "0f1f26d9-341a-4749-bb0b-93baeb345ba3",
+        		"coordinates": {
+        			"x1": 0.323,
+        			"y1": 3.46,
+        			"x2": 0.44564,
+        			"y2": 6.889
+        		},
+        		"label": "enzyma"
+        	}
+        ]
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_d716a3d3d33a4e1cab42b98c91d6b412
+      - id: pair_5fc6d2e898d04d0ba4d47887b51bed53
+        name: Authorization
+        value: JWT
+          eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMzcxODQyLCJqdGkiOiI1NDkyZTNhY2NlZDE0MjJkYWFkYmM3NjI5NWNjYTViMyIsInVzZXJfaWQiOjF9.93TM3C3B2HJKIkWql_PZh7QtQCMT_YajM8LtsXkcTgI
+        description: ""
+      - id: pair_9389b53905f8489399252e3557ac1d12
+        name: ""
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1630214912303
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f8428fd724fc44b98295cda75f73c9df
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630286128679
+    created: 1630201602223
+    url: http://localhost:8000/image-labelling/image
+    name: GET-IMAGE
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_a33bb8d03823408fb3c716856d6036fa
+        name: image_id
+        value: 0f1f26d9-341a-4749-bb0b-93baeb345ba3
+        description: ""
+    headers:
+      - id: pair_0412cc88d43a4dfab652c8c215c1b7a1
+        name: Authorization
+        value: JWT
+          eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMzcxMTU1LCJqdGkiOiJhMDE3Y2M3ZjA2N2I0OThhOTRkN2JmODA2NjJkNGI2ZCIsInVzZXJfaWQiOjF9.VBsoFCnQ7oLQLMw6Ac7VyxxMP4GtL81VWY3oJBU81XQ
+        description: ""
+      - id: pair_1e484f6a94414a8f88b8074a233fcf12
+        name: ""
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1630201602223
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1ad59fe9abd0473dac8d075ee38b734c
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630286135776
+    created: 1630199246154
+    url: http://localhost:8000/image-labelling/image/list
+    name: LIST-IMAGES
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_3b615c37deec4ae7a5046b2552775324
+        name: start_idx
+        value: "0"
+        description: ""
+        disabled: false
+      - id: pair_4f76ed4615fa42189ea3f19afd42d55a
+        name: end_idx
+        value: "3"
+        description: ""
+        disabled: false
+      - id: pair_046f162ef7ff41a5bc1eeab8a1038ac6
+        name: start_date
+        value: 2021-08-28T00:45:13.143278Z
+        description: ""
+        disabled: true
+      - id: pair_3efb34ef271e495ea207509c3ad15e12
+        name: end_date
+        value: 2021-08-30T00:46:13.143278Z
+        description: ""
+        disabled: true
+      - id: pair_dfb076309b784ae496154c3891453a71
+        name: status
+        value: all
+        description: ""
+      - id: pair_6dfe50542d9543d78a763ef46cbc6aea
+        name: ""
+        value: ""
+        description: ""
+    headers:
+      - id: pair_af71b7c0159f4e36b61a48e81fc0225b
+        name: Authorization
+        value: JWT
+          eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMzcxMTU1LCJqdGkiOiJhMDE3Y2M3ZjA2N2I0OThhOTRkN2JmODA2NjJkNGI2ZCIsInVzZXJfaWQiOjF9.VBsoFCnQ7oLQLMw6Ac7VyxxMP4GtL81VWY3oJBU81XQ
+        description: ""
+    authentication: {}
+    metaSortKey: -1630199246154
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_64b796e4ecaf4e2cabc053c259315a6e
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630286145521
+    created: 1630132555184
+    url: http://localhost:8000/image-labelling/image
+    name: UPLOAD-IMAGES
+    description: ""
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - id: pair_b0d5a82947b048aeabf5f10b946f7e56
+          name: images
+          value: ""
+          description: ""
+          type: file
+          fileName: /Users/sanallisboa/Desktop/image.png
+
+          disabled: false
+    parameters: []
+    headers:
+      - id: pair_822804bae2ce44549203fd64eff99e84
+        name: Authorization
+        value: JWT
+          eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMzcxMTU1LCJqdGkiOiJhMDE3Y2M3ZjA2N2I0OThhOTRkN2JmODA2NjJkNGI2ZCIsInVzZXJfaWQiOjF9.VBsoFCnQ7oLQLMw6Ac7VyxxMP4GtL81VWY3oJBU81XQ
+        description: ""
+        disabled: false
+      - name: Content-Type
+        value: multipart/form-data
+        id: pair_a5f780afd20e4e9e840efd18cb7c9ebd
+    authentication: {}
+    metaSortKey: -1630132555184
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_71ad807bf26a418db2887bfad81911a2
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630286151993
+    created: 1630130810994
+    url: http://localhost:8000/user/login
+    name: LOGIN
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "sanal16",
+        	"password": "MakeWorldABetterPlace"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_89667a40f935499bb984f486bec2fb0a
+    authentication: {}
+    metaSortKey: -1630130810994
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0ecd5b75adc74c079801baa3e1e77e47
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630286155344
+    created: 1630128662933
+    url: http://localhost:8000/user/register
+    name: REGISTER
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"first_name": "sanal",
+        	"last_name": "lisboa",
+        	"email": "sanallisboa39@gmail.com",
+        	"username": "sanal16",
+        	"password": "MakeWorldABetterPlace"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_3a38e6be030442c9a56d3285799089e0
+    authentication: {}
+    metaSortKey: -1630128662933
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_62e88692347d0786b850af0b023f76dbd0e2c5c2
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630128637765
+    created: 1630128637765
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1630128637765
+    _type: environment
+  - _id: jar_62e88692347d0786b850af0b023f76dbd0e2c5c2
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630128637767
+    created: 1630128637767
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_ccf8f8da514e42f1b11ba4c6be563ddc
+    parentId: wrk_a2bb96bdf6284625be47c08c87840b55
+    modified: 1630128637761
+    created: 1630128637761
+    fileName: image-labelling-spec.yml
+    contents: ""
+    contentType: yaml
+    _type: api_spec
