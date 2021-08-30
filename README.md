@@ -19,4 +19,6 @@ API SPECS
 
 Import `image-labelling-spec.yml` in Insomnia app
 
+IDEAL API FLOW
+
 ![Alt text](readme_static/api-flow.png?raw=true "Image lebelling API flow")
