@@ -9,3 +9,8 @@ RUNNING PROJECT
 
     `cd <PROJECT ROOT DERICTORY>`
     `docker-compose up`
+
+
+API SPECS
+
+Import `image-labelling-spec.yml` in Insomnia app
