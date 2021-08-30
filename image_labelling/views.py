@@ -196,6 +196,10 @@ class LabelView(APIView):
 
 
 class ImageLabelsView(APIView):
+    """View is used to list images"""
+
+    permission_classes = (IsAuthenticated,)
+
     def get(self, request):
 
         request_serialzier = LabelListRequestSerialzier(data=request.GET)
@@ -218,6 +222,8 @@ class ImageLabelsView(APIView):
 class ImageLabelsSearchView(APIView):
     """This view is responsible for searching labels in db."""
 
+    permission_classes = (IsAuthenticated,)
+
     def get(self, request):
 
         request_serialzier = ImageSearchRequestSerialzier(data=request.GET)
@@ -235,6 +241,8 @@ class ImageLabelsSearchView(APIView):
 
 class ImageMetadataView(APIView):
     """This view is responsible for getting image metadata"""
+
+    permission_classes = (IsAuthenticated,)
 
     def get(self, request):
 
