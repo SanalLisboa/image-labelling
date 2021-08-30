@@ -1,3 +1,7 @@
+PYTHON VERSION
+
+    `python: 3.8.0`
+
 REQUIREMENTS TO RUN THE PROJECT
 
     `docker: 20.10.8`
