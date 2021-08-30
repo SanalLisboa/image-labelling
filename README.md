@@ -63,7 +63,7 @@ DEPLOYMENT FLOW
 
 AWS SETUP(With load balancing and downtime prevention)
 
-![Alt text](readme_static/deployment.png?raw=true "AWS Setup")
+![Alt text](readme_static/aws-setup.png?raw=true "AWS Setup")
 
 
 Note: The images are rightnow stored in file system but better solution will be storing it on cloud on s3. 
